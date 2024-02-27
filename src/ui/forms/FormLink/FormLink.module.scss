@@ -1,0 +1,13 @@
+@import "src/assets/variables";
+
+.container{
+  color: rgba($COLOR_LIGHT_THEME_SECONDARY, 0.5);
+}
+.link{
+  color: rgba($COLOR_LIGHT_THEME_MAIN_BACKGROUND, 0.5);
+  outline: none;
+  text-decoration: none;
+  &:hover{
+    color: $COLOR_DARK_THEME_PRIMARY
+  }
+}

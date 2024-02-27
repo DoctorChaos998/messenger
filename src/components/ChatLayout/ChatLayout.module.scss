@@ -1,0 +1,13 @@
+@import "src/assets/variables";
+
+.container{
+  display: flex;
+  border-radius: 5px;
+  border: 1px solid $COLOR_NAUTICAL;
+  height: 840px;
+  width: 910px;
+  background-color: $COLOR_DARK_THEME_BACKGROUND;
+  box-shadow: 0 0 10px 0 $COLOR_NAUTICAL;
+  margin-top: 10px;
+  align-self: center;
+}

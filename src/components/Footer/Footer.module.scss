@@ -1,0 +1,13 @@
+@import "src/assets/variables";
+
+.container{
+  display: flex;
+  height: 20px;
+  background-color: $COLOR_DARK_THEME_MAIN_BACKGROUND;
+  align-items: center;
+  justify-content: center;
+}
+.footer{
+  color: rgba($COLOR_DARK_THEME_SECONDARY, 0.5);
+  font-size: 0.7em;
+}

@@ -1,0 +1,9 @@
+@import "src/assets/variables";
+
+.container{
+  color: $COLOR_WHITE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}

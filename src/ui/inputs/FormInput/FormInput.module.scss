@@ -1,0 +1,26 @@
+@import "src/assets/variables";
+
+.container{
+  height: 40px;
+  width: 400px;
+  border-bottom: 2px solid $COLOR_DARK_THEME_PRIMARY;
+  color: $COLOR_DARK_THEME_PRIMARY;
+  display: flex;
+  align-items: center;
+}
+.icon{
+  color: $COLOR_DARK_THEME_PRIMARY;
+  font-size: 1.2em;
+}
+.input{
+  width: 100%;
+  color: $COLOR_DARK_THEME_PRIMARY;
+  padding: 0 5px;
+  background-color: transparent;
+  font-size: 1.2em;
+  outline: none;
+  border: none;
+  &::placeholder{
+    color: rgba($COLOR_DARK_THEME_PRIMARY, 0.5);
+  }
+}

@@ -1,0 +1,1 @@
+// export const wsApi = new WebSocket('ws://localhost:8080');

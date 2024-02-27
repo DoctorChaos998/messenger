@@ -1,0 +1,14 @@
+@import "src/assets/variables";
+
+.container{
+  width: 100%;
+  background-color: $COLOR_LIGHT_THEME_PRIMARY;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+}
+.header{
+  font-size: 1.5em;
+  color: $COLOR_DARK_THEME_PRIMARY;
+}

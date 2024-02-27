@@ -1,0 +1,16 @@
+@import "src/assets/variables";
+
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  flex-direction: column;
+}
+.header{
+  color: rgba($COLOR_LIGHT_THEME_PRIMARY, 1);
+}
+.icon{
+  color: rgba($COLOR_LIGHT_THEME_PRIMARY, 1);
+  font-size: 2em;
+}

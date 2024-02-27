@@ -1,0 +1,10 @@
+@import "src/assets/variables";
+
+.main{
+  min-height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  background-image: url('/background.jpg');
+  background-size: cover;
+  background-position: center;
+}

@@ -1,0 +1,19 @@
+@import "src/assets/variables";
+
+.container{
+  padding: 30px 20px;
+  border-radius: 10px;
+  backdrop-filter: blur(4px);
+  background-color: rgba($COLOR_DARK_THEME_MAIN_BACKGROUND, 0.5);
+  border: 1px solid $COLOR_DARK_THEME_PRIMARY;
+  box-shadow: 0 0 15px 0 $COLOR_DARK_THEME_PRIMARY;
+  position: relative;
+}
+
+.form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-direction: column;
+}

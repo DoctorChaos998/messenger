@@ -1,0 +1,19 @@
+@import "src/assets/variables";
+
+.container{
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid rgba($COLOR_NAUTICAL, 0.4);
+}
+
+.label{
+  width: 250px;
+  height: 30px;
+  background: $COLOR_GREY;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}

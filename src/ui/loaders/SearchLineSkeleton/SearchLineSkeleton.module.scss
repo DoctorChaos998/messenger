@@ -1,0 +1,28 @@
+@import "src/assets/variables";
+
+.container{
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid rgba($COLOR_NAUTICAL, 0.4);
+}
+
+.skeletonSearch{
+  width: 250px;
+  height: 30px;
+  background: linear-gradient(90deg, #f0f0f0 25%, $COLOR_NAUTICAL 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: pulse 1.5s infinite;
+  border-radius: 4px;
+}
+
+@keyframes pulse {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: -100% 50%;
+  }
+}

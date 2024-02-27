@@ -1,0 +1,11 @@
+@import "src/assets/variables";
+
+.layout{
+  flex: 1;
+  //height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  //background-color: $COLOR_DARK_THEME_BACKGROUND;
+  //backdrop-filter: blur(1px);
+}
