@@ -1,7 +1,7 @@
 import {httpApi} from "@/http/instance";
 import axios, {AxiosError} from "axios";
 
-export default class UserService {
+export default class ChatService {
     private static serviceUrl = '/chats';
 
     static async getAllChats(): Promise<IChat[]>{

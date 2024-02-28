@@ -7,13 +7,34 @@
   align-items: center;
   width: 100%;
   border-bottom: 1px solid rgba($COLOR_NAUTICAL, 0.4);
+
 }
 
 .label{
   width: 250px;
-  height: 30px;
+  height: 40px;
   background: $COLOR_GREY;
   border-radius: 4px;
   display: flex;
   align-items: center;
+  gap: 10px;
+  padding: 5px;
+  border: 1px solid rgba($COLOR_NAUTICAL, 0.4);
+  &:focus-within{
+    border: 1px solid rgba($COLOR_NAUTICAL, 1)
+  }
+}
+.input{
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 0 5px;
+  color: $COLOR_WHITE;
+  width: 100%;
+  &::placeholder{
+    color: rgba($COLOR_WHITE, 0.5);
+  }
+}
+.icon{
+  color: $COLOR_WHITE;
 }

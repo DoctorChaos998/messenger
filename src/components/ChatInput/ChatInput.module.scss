@@ -1,0 +1,42 @@
+@import "src/assets/variables";
+
+.container{
+  padding: 20px;
+  display: flex;
+  width: 100%;
+  gap: 20px;
+}
+.textInput{
+  overflow-y: hidden;
+  min-height: 40px;
+  padding: 10px;
+  width: 100%;
+  word-wrap: break-word;
+  outline: none;
+  background-color: rgba($COLOR_BLACK, 0.7);
+  border: none;
+  border-radius: 10px;
+  color: $COLOR_WHITE;
+  &::placeholder{
+    color: rgba($COLOR_WHITE, 0.5);
+  }
+  resize: none;
+  font-family: inherit;
+  font-weight: inherit;
+}
+.button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  height: 50px;
+}
+.icon{
+  color: rgba($COLOR_NAUTICAL, 0.7);
+  &:hover{
+    color: rgba($COLOR_NAUTICAL, 1);
+  }
+}

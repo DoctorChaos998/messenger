@@ -1,0 +1,23 @@
+@import "src/assets/variables";
+
+.container{
+  flex: 1;
+  background-color: $COLOR_DARK_THEME_BACKGROUND;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loader {
+  border: 10px solid transparent;
+  border-top-color: $COLOR_LIGHT_THEME_SECONDARY;
+  border-bottom-color: $COLOR_LIGHT_THEME_SECONDARY;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: loaderSpin 1s ease-out infinite;
+}
+
+@keyframes loaderSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

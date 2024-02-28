@@ -2,6 +2,7 @@
 import React, {useEffect} from "react";
 import {useAppSelector} from "@/lib/hooks";
 import {useRouter} from "next/navigation";
+import GlobalLoader from "@/ui/loaders/GlobalLoader/GlobalLoader";
 
 export default function ContentLayout({children,}: {
     children: React.ReactNode
@@ -12,6 +13,9 @@ export default function ContentLayout({children,}: {
         if(isAuth) router.push('/chats');
     }, [isAuth]);
     return (
-        children
+        isAuth?
+            <GlobalLoader/>
+            :
+            children
     )
 }

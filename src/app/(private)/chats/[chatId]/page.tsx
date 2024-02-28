@@ -1,6 +1,8 @@
 'use client'
 import React, {useEffect} from 'react';
 import {useParams, useRouter} from "next/navigation";
+import ChatBody from "@/components/ChatBody/ChatBody";
+import ChatInput from "@/components/ChatInput/ChatInput";
 
 const CurrentChat = () => {
     const params: {chatId: string} = useParams();
@@ -15,9 +17,10 @@ const CurrentChat = () => {
         }
     }, []);
     return (
-        <div>
-
-        </div>
+        <>
+            <ChatBody/>
+            <ChatInput/>
+        </>
     );
 };
 

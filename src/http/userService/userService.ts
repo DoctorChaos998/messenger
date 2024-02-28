@@ -136,4 +136,22 @@ export default class UserService {
     static getAccessToken() {
         return this.accessToken;
     }
+
+    static async searchUser(login: string): Promise<INotInChatUser>{
+        try {
+            const response  =  await httpApi.get<INotInChatUser>(`${this.serviceUrl}/${login}`);
+            return Promise.resolve(response.data);
+        } catch(error){
+            if(axios.isAxiosError(error)){
+                const errorResponse: AxiosError<{error: string}> = error;
+                if(errorResponse.response){
+                    return Promise.reject({
+                        status: errorResponse.response.status,
+                        error: errorResponse.response.data.error
+                    });
+                }
+            }
+            throw error
+        }
+    }
 }

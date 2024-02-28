@@ -24,13 +24,13 @@ export default function RootLayout({
       <StoreProvider>
             <html lang="en">
                   <body className={inter.className}>
-                  <AuthLoader>
                       <Header/>
                       <MainLayout>
-                          {children}
+                          <AuthLoader>
+                              {children}
+                          </AuthLoader>
                       </MainLayout>
                       <Footer/>
-                  </AuthLoader>
                   </body>
             </html>
       </StoreProvider>

@@ -5,6 +5,7 @@ import {useRouter} from "next/navigation";
 import ChatLayout from "@/components/ChatLayout/ChatLayout";
 import ChatsList from "@/components/ChatsList/ChatsList";
 import ChatContainer from "@/components/ChatContainer/ChatContainer";
+import GlobalLoader from "@/ui/loaders/GlobalLoader/GlobalLoader";
 
 export default function ContentLayout({children,}: {
     children: React.ReactNode
@@ -15,11 +16,14 @@ export default function ContentLayout({children,}: {
         if(!isAuth) router.push('/login');
     }, [isAuth]);
     return (
+        isAuth?
         <ChatLayout>
             <ChatsList/>
             <ChatContainer>
                 {children}
             </ChatContainer>
         </ChatLayout>
+            :
+            <GlobalLoader/>
     )
 }

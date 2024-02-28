@@ -49,7 +49,7 @@ const LoginForm = () => {
                 <FormInput value={password}
                            onChange={(event) => setPassword(event.target.value)}
                            placeholder={'Password'} icon={'lock'} withIcon={true} type={'password'} max={32}/>
-                <FormButton disabled={false} text={'Sign up'}/>
+                <FormButton disabled={false} text={'Sign in'}/>
                 <FormCheckBox text={'Remember me'} type={"checkbox"} checked={rememberMe} onChange={(event) => setRememberMe(event.target.checked)}/>
                 <FormLink text={'Don\'t have an account yet?'} linkText={'Register now'} link={'/registration'}/>
             </AuthForm>

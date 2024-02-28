@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URl = process.env.NODE_ENV === 'production'?'https://ocsearch.ru/api':'http://localhost:5000/api';
+const API_URl = process.env.NODE_ENV === 'production'?'localhost:8080/api':'localhost:8080/api';
 
 export const httpApi = axios.create({
     withCredentials: true,

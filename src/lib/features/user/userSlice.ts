@@ -8,7 +8,7 @@ interface IUserState {
 const initialState: IUserState = {
     id: 0,
     login: '',
-    isAuth: true,
+    isAuth: false,
 }
 const userSlice = createSlice({
     name: 'userSlice',

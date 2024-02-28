@@ -23,4 +23,4 @@ const chatsSlice = createSlice({
         },
     }
 })
-export const {actions: chatsActions, reducer: chatsReducer} = chatsSlice;
+export const {actions: currentChatActions, reducer: currentChatReducer} = chatsSlice;

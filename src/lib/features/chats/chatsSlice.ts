@@ -4,13 +4,15 @@ import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 interface IChatsState {
     status: status,
     chatsList: IChat[],
-    notInChatUsers: INotInChatUser|null
+    notInChatUsers: INotInChatUser|null,
+    searchLine: string
 }
 
 const initialState: IChatsState = {
     status: 'initial',
     chatsList: [],
-    notInChatUsers: null
+    notInChatUsers: null,
+    searchLine: ''
 }
 
 const chatsSlice = createSlice({
@@ -21,6 +23,12 @@ const chatsSlice = createSlice({
             state.chatsList = action.payload;
             state.status = 'success';
         },
+        setSearchLine(state, action: PayloadAction<string>){
+            state.searchLine = action.payload;
+        },
+        setNotInChatUsers(state, action: PayloadAction<INotInChatUser|null>){
+            state.notInChatUsers = action.payload;
+        }
     }
 })
 export const {actions: chatsActions, reducer: chatsReducer} = chatsSlice;
