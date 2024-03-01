@@ -1,4 +1,7 @@
 .container{
   flex: 1;
   background-color: #424874;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }

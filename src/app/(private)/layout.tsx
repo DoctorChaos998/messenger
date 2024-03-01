@@ -17,12 +17,12 @@ export default function ContentLayout({children,}: {
     }, [isAuth]);
     return (
         isAuth?
-        <ChatLayout>
-            <ChatsList/>
-            <ChatContainer>
-                {children}
-            </ChatContainer>
-        </ChatLayout>
+            <ChatLayout>
+                <ChatsList/>
+                <ChatContainer>
+                    {children}
+                </ChatContainer>
+            </ChatLayout>
             :
             <GlobalLoader/>
     )

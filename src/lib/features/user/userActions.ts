@@ -7,7 +7,9 @@ export const userLogin = (nickname:string, password: string, rememberMe: boolean
         UserService.createRequestInterceptor();
         UserService.createResponseInterceptor(() => dispatch(userActions.userLogoutSuccess()));
         dispatch(userActions.userLoginSuccess(value));
-    })
+    }).catch(() => {
+        dispatch(userActions.setStatus('success'));
+    });
 }
 
 export const checkAuth = () => async (dispatch: AppDispatch) => {
@@ -15,6 +17,8 @@ export const checkAuth = () => async (dispatch: AppDispatch) => {
         UserService.createRequestInterceptor();
         UserService.createResponseInterceptor(() => dispatch(userActions.userLogoutSuccess()));
         dispatch(userActions.userLoginSuccess(value));
-    })
+    }).catch(() => {
+        dispatch(userActions.setStatus('success'));
+    });
 }
 

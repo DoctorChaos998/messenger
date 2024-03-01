@@ -19,13 +19,29 @@
   border-radius: 50%;
   height: 50px;
   width: 50px;
-  text-align: center;
-  border: 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $COLOR_PEACH;
+  font-size: 2em;
 }
-
-.chatInfo{
+.lastMessage{
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: gray;
+}
+.userInfo{
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  align-items: center;
+  color: $COLOR_WHITE;
+}
+
+.isOnline{
+  border-radius: 50%;
+  height: 10px;
+  width: 10px;
 }

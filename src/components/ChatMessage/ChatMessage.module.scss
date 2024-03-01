@@ -1,0 +1,19 @@
+@import "src/assets/variables";
+
+
+.container{
+  display: flex;
+  gap: 20px;
+}
+.textMessageContainer{
+  max-width: 400px;
+  background-color: $COLOR_LIGHT_THEME_SECONDARY;
+  color: $COLOR_BLACK;
+  border-radius: 5px;
+}
+.circleIcon{
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+}

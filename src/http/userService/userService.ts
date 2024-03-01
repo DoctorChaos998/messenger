@@ -139,7 +139,7 @@ export default class UserService {
 
     static async searchUser(login: string): Promise<INotInChatUser>{
         try {
-            const response  =  await httpApi.get<INotInChatUser>(`${this.serviceUrl}/${login}`);
+            const response  =  await httpApi.get<INotInChatUser>(`${this.serviceUrl}/search/${login}`);
             return Promise.resolve(response.data);
         } catch(error){
             if(axios.isAxiosError(error)){

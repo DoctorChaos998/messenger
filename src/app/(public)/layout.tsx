@@ -10,7 +10,9 @@ export default function ContentLayout({children,}: {
     const isAuth = useAppSelector(state => state.userReducer.isAuth);
     const router = useRouter();
     useEffect(() => {
-        if(isAuth) router.push('/chats');
+        if(isAuth){
+            router.push('/chats');
+        }
     }, [isAuth]);
     return (
         isAuth?

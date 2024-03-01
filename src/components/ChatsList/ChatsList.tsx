@@ -6,8 +6,9 @@ import SearchLineSkeleton from "@/ui/loaders/SearchLineSkeleton/SearchLineSkelet
 import ChatsSearcher from "@/components/ChatsSearcher/ChatsSearcher";
 import { shallowEqual } from 'react-redux';
 import ChatService from "@/http/chatService/chatService";
-import {chatsActions, chatsReducer} from "@/lib/features/chats/chatsSlice";
+import {chatsActions} from "@/lib/features/chats/chatsSlice";
 import ChatItem from "@/components/ChatItem/ChatItem";
+import NotInChatUser from "@/components/NotInChatUser/NotInChatUser";
 
 const ChatsList = () => {
     const status = useAppSelector(state => state.chatsReducer.status);
@@ -19,13 +20,13 @@ const ChatsList = () => {
         }).map((chat) => chat.chatId);
     }, shallowEqual);
     const searchLine = useAppSelector(state => state.chatsReducer.searchLine);
+    const notInChatUser = useAppSelector(state => state.chatsReducer.notInChatUser);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
         ChatService.getAllChats().then(value => {
             dispatch(chatsActions.loadingChatsListSuccess(value));
         }).catch(() => {
-            console.log(111);
         })
     }, []);
 
@@ -38,9 +39,7 @@ const ChatsList = () => {
                 {chatIdsList.map((chatId) => <ChatItem chatId={chatId}/>)}
                 {searchLine&&<p className={classes.subHeader}>Global search</p>}
                 {
-                    <div>
-
-                    </div>
+                    notInChatUser&&<NotInChatUser notInChatUser={notInChatUser}/>
                 }
             </>
             :

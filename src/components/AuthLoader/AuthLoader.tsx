@@ -1,17 +1,17 @@
 'use client'
 import React, {FC, PropsWithChildren, useEffect, useState} from 'react';
-import {useAppDispatch} from "@/lib/hooks";
+import {useAppDispatch, useAppSelector} from "@/lib/hooks";
 import {checkAuth} from "@/lib/features/user/userActions";
 import GlobalLoader from "@/ui/loaders/GlobalLoader/GlobalLoader";
 
 const AuthLoader: FC<PropsWithChildren> = ({children}) => {
-    const [isLoading, setIsLoading] = useState(true);
+    const status = useAppSelector(state => state.userReducer.status);
     const dispatch = useAppDispatch();
     useEffect(() => {
-        dispatch(checkAuth()).finally(() => setIsLoading(false));
+        dispatch(checkAuth());
     }, []);
     return (
-        isLoading?
+        status!=='success'?
             <GlobalLoader/>
             :
             children

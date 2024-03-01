@@ -1,19 +1,17 @@
 @import "src/assets/variables";
 
 .container{
-  flex: 1;
-  background-color: $COLOR_DARK_THEME_BACKGROUND;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex: 1;
 }
 .loader {
-  border: 10px solid transparent;
-  border-top-color: $COLOR_LIGHT_THEME_SECONDARY;
-  border-bottom-color: $COLOR_LIGHT_THEME_SECONDARY;
+  border: 5px solid transparent;
+  border-top-color: $COLOR_NAUTICAL;
   border-radius: 50%;
-  width: 120px;
-  height: 120px;
+  width: 60px;
+  height: 60px;
   animation: loaderSpin 1s linear infinite;
 }
 

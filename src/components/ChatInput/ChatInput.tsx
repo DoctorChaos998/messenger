@@ -9,6 +9,7 @@ const ChatInput = () => {
     const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setText(event.target.value);
         event.target.style.height = 'auto';
+        if(event.target.scrollHeight < 180)
         event.target.style.height = event.target.scrollHeight + 'px';
     };
     return (
