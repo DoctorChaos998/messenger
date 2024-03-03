@@ -3,13 +3,13 @@ import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 interface ICurrentChatState {
     status: status,
-    currentChat: IChat|null,
+    currentChatId: number,
     messages: IMessage[]
 }
 
 const initialState: ICurrentChatState = {
     status: 'initial',
-    currentChat: null,
+    currentChatId: 0,
     messages: []
 }
 
@@ -21,6 +21,13 @@ const chatsSlice = createSlice({
             state.messages = action.payload;
             state.status = 'success';
         },
+        addMessage(state, action: PayloadAction<IMessage>){
+            state.messages.push(action.payload);
+        },
+        setChatId(state, action: PayloadAction<number>){
+            state.currentChatId = action.payload;
+        },
+
     }
 })
 export const {actions: currentChatActions, reducer: currentChatReducer} = chatsSlice;

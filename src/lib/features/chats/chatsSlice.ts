@@ -34,6 +34,14 @@ const chatsSlice = createSlice({
             state.chatsList.unshift(action.payload);
             state.searchLine = '';
             state.notInChatUser = null;
+        },
+        setUserStatus(state, action: PayloadAction<{recipientId: number, isRecipientOnline: boolean}>){
+            state.chatsList.find((chat) => {
+                return chat.recipientId === action.payload.recipientId;
+            })!.isRecipientOnline = action.payload.isRecipientOnline;
+        },
+        setLastMessage(state, action: PayloadAction<{chatId: number, lastMessage: string}>){
+            state.chatsList.find(chat => chat.chatId === action.payload.chatId)!.lastMessage = action.payload.lastMessage;
         }
     }
 })

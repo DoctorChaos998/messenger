@@ -9,6 +9,7 @@ import ChatService from "@/http/chatService/chatService";
 import {chatsActions} from "@/lib/features/chats/chatsSlice";
 import ChatItem from "@/components/ChatItem/ChatItem";
 import NotInChatUser from "@/components/NotInChatUser/NotInChatUser";
+import WsApi from "@/ws/instance";
 
 const ChatsList = () => {
     const status = useAppSelector(state => state.chatsReducer.status);
@@ -27,7 +28,26 @@ const ChatsList = () => {
         ChatService.getAllChats().then(value => {
             dispatch(chatsActions.loadingChatsListSuccess(value));
         }).catch(() => {
-        })
+        });
+        const setUserStatusHandler = (event: MessageEvent) => {
+            const message: IStatusMessage|IReadMessage|INewMessage = JSON.parse(event.data);
+            if(message.type === 'status'){
+                dispatch(chatsActions.setUserStatus({recipientId: message.data.userId, isRecipientOnline: message.data.isOnline}));
+            }
+        };
+        const setNewMessage = (event: MessageEvent) => {
+            const message: IStatusMessage|IReadMessage|INewMessage = JSON.parse(event.data);
+            if(message.type === 'new_message'){
+                dispatch(chatsActions.setLastMessage({chatId: message.data.chatId, lastMessage: message.data.message}));
+            }
+        }
+
+        WsApi.wsApi.addEventListener('message', setUserStatusHandler);
+        WsApi.wsApi.addEventListener('message', setNewMessage);
+        return () => {
+            WsApi.wsApi.removeEventListener('message', setUserStatusHandler);
+            WsApi.wsApi.removeEventListener('message', setNewMessage);
+        }
     }, []);
 
     return (
@@ -36,7 +56,7 @@ const ChatsList = () => {
             <>
                 <ChatsSearcher/>
                 <p className={classes.subHeader}>Added users</p>
-                {chatIdsList.map((chatId) => <ChatItem chatId={chatId}/>)}
+                {chatIdsList.map((chatId) => <ChatItem key={chatId} chatId={chatId}/>)}
                 {searchLine&&<p className={classes.subHeader}>Global search</p>}
                 {
                     notInChatUser&&<NotInChatUser notInChatUser={notInChatUser}/>

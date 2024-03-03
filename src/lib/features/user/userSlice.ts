@@ -1,5 +1,6 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {status} from "@/types/slices";
+import {IUserLoginData} from "@/types/apiUserData";
 
 interface IUserState {
     id: number,
@@ -17,8 +18,9 @@ const userSlice = createSlice({
     name: 'userSlice',
     initialState,
     reducers: {
-        userLoginSuccess(state, action:PayloadAction<{nickname: string, accessToken: string}>){
-            state.login = action.payload.nickname;
+        userLoginSuccess(state, action:PayloadAction<IUserLoginData>){
+            state.login = action.payload.login;
+            state.id = action.payload.userId;
             state.isAuth = true;
             state.status = 'success';
         },

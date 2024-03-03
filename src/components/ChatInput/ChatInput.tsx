@@ -1,10 +1,22 @@
 import React, {useState} from 'react';
 import classes from "./ChatInput.module.scss";
+import ChatService from "@/http/chatService/chatService";
+import {useAppDispatch, useAppSelector} from "@/lib/hooks";
+import {currentChatActions} from "@/lib/features/currentChat/currentChatSlice";
+import {chatsActions} from "@/lib/features/chats/chatsSlice";
 
 const ChatInput = () => {
     const [text, setText] = useState('');
+    const currentChatId = useAppSelector(state => state.currentChatReducer.currentChatId);
+    const dispatch = useAppDispatch();
     const handleSendMessage = () => {
-
+        if(text.length>0 && currentChatId !== undefined){
+            ChatService.sendMessage(currentChatId,text).then(value => {
+                dispatch(currentChatActions.addMessage(value));
+                dispatch(chatsActions.setLastMessage({chatId: currentChatId, lastMessage: text}));
+            });
+            setText('');
+        }
     }
     const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setText(event.target.value);

@@ -15,7 +15,7 @@ const NotInChatUser: FC<INotInChatUserProps> = ({notInChatUser}) => {
     const addNewChatHandler = () => {
         ChatService.createChat(notInChatUser.userId).then(value => {
             dispatch(chatsActions.createNewChat(value));
-            router.push(`chats/${notInChatUser.userId}`);
+            setTimeout(() => router.push(`chats/${value.chatId}`), 500);
         }).catch(() => {});
     };
 

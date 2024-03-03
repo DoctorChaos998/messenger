@@ -8,12 +8,17 @@
   gap: 15px;
   border-bottom: 1px solid rgba($COLOR_NAUTICAL, 0.4);
   align-items: center;
+  cursor: pointer;
+  &:hover{
+    background-color: $COLOR_DARK_THEME_MAIN_BACKGROUND;;
+  }
 }
 .textContainer{
   display: flex;
   height: 100%;
   flex-direction: column;
   justify-content: space-around;
+  width: 70%;
 }
 .circleIcon{
   border-radius: 50%;
@@ -26,7 +31,6 @@
   font-size: 2em;
 }
 .lastMessage{
-  width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

@@ -1,5 +1,5 @@
 export interface IUserLoginData{
-    id: number,
-    nickname: string,
+    userId: number,
+    login: string,
     accessToken: string,
 }
