@@ -7,6 +7,7 @@ import {useRouter} from "next/navigation";
 import ChatService from "@/http/chatService/chatService";
 import {currentChatActions} from "@/lib/features/currentChat/currentChatSlice";
 import {shallowEqual} from "react-redux";
+import ChatHeader from "@/components/ChatHeader/ChatHeader";
 
 
 const ChatBody = ({chatId}: {chatId:number}) => {
@@ -25,14 +26,13 @@ const ChatBody = ({chatId}: {chatId:number}) => {
     useEffect(() => {
         if(chatId !== chatId) router.push('/chats');
         else {
-            dispatch(currentChatActions.setChatId(chatId));
             ChatService.getMessages(chatId, 0, 20).then(value => {
                 dispatch(currentChatActions.loadingMessagesListSuccess(value));
+                dispatch(currentChatActions.setChatId(chatId));
                 setTimeout(() => endRef.current?.scrollIntoView(false),0);
             }).catch(() => {
                 router.push('/chats');
             });
-
         }
     }, []);
 
@@ -52,7 +52,7 @@ const ChatBody = ({chatId}: {chatId:number}) => {
                             :
                             messageIds.map(messageId => <ChatMessage key={messageId} messageId={messageId} recipientLogin={recipientLogin}/>)
             }
-            <div ref={endRef}/>
+            <div ref={endRef} style={{bottom: 0, clear: 'both', position: "relative"}}/>
         </div>
     );
 };

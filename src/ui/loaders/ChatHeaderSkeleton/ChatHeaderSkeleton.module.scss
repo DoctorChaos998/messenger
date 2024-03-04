@@ -1,0 +1,25 @@
+@import "src/assets/variables";
+
+.container{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.recipientInfo{
+  background: linear-gradient(90deg, $COLOR_LIGHT_THEME_PRIMARY 50%, $COLOR_NAUTICAL 75%);
+  background-size: 200% 100%;
+  animation: pulse 1.5s infinite;
+  border-radius: 4px;
+  height: 20px;
+  width: 200px;
+}
+
+@keyframes pulse {
+  0% {
+    background-position: 0 50%;
+  }
+  100% {
+    background-position: -200% 50%;
+  }
+}

@@ -1,29 +1,41 @@
 @import "src/assets/variables";
 
 .container{
-  display: flex;
-  gap: 10px;
+  display: block;
+  position: relative;
   margin: 10px;
-  flex-direction: column;
   max-width: 400px;
-}
-.textMessageContainer{
   background-color: $COLOR_LIGHT_THEME_SECONDARY;
   color: $COLOR_BLACK;
   border-radius: 5px;
-  padding: 5px 10px;
+  padding: 5px 10px 20px;
   overflow: hidden;
   word-wrap: break-word;
-  margin-left: 10px;
+  clear: both;
+  min-width: 200px;
 }
+
 .infoContainer{
   display: flex;
-  gap: 10px;
-  color: $COLOR_PEACH;
+  gap: 5px;
+  position: absolute;
   align-items: center;
+  right: 10px;
+  justify-content: center;
 }
+
 .timeContainer{
   color: rgba(gray, 1);
   font-size: 0.7em;
   text-align: center;
+}
+
+.isMessageUnRead{
+  font-size: 1em;
+  color: gray;
+}
+
+.isMessageRead{
+  font-size: 1em;
+  color: blue;
 }

@@ -41,7 +41,12 @@ const chatsSlice = createSlice({
             })!.isRecipientOnline = action.payload.isRecipientOnline;
         },
         setLastMessage(state, action: PayloadAction<{chatId: number, lastMessage: string}>){
-            state.chatsList.find(chat => chat.chatId === action.payload.chatId)!.lastMessage = action.payload.lastMessage;
+            const newChat = state.chatsList.find(chat => chat.chatId === action.payload.chatId)!;
+            newChat.lastMessage = action.payload.lastMessage;
+            // newChat.unreadMessagesNumber += 1;
+        },
+        addNewChat(state, action: PayloadAction<IChat>){
+            state.chatsList.unshift(action.payload);
         }
     }
 })

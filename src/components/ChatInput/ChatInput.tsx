@@ -10,7 +10,7 @@ const ChatInput = () => {
     const currentChatId = useAppSelector(state => state.currentChatReducer.currentChatId);
     const dispatch = useAppDispatch();
     const handleSendMessage = () => {
-        if(text.length>0 && currentChatId !== undefined){
+        if(text.length>0 && currentChatId !== 0){
             ChatService.sendMessage(currentChatId,text).then(value => {
                 dispatch(currentChatActions.addMessage(value));
                 dispatch(chatsActions.setLastMessage({chatId: currentChatId, lastMessage: text}));

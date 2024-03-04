@@ -27,26 +27,31 @@ const ChatsList = () => {
     useEffect(() => {
         ChatService.getAllChats().then(value => {
             dispatch(chatsActions.loadingChatsListSuccess(value));
-        }).catch(() => {
-        });
-        const setUserStatusHandler = (event: MessageEvent) => {
-            const message: IStatusMessage|IReadMessage|INewMessage = JSON.parse(event.data);
-            if(message.type === 'status'){
-                dispatch(chatsActions.setUserStatus({recipientId: message.data.userId, isRecipientOnline: message.data.isOnline}));
-            }
-        };
-        const setNewMessage = (event: MessageEvent) => {
-            const message: IStatusMessage|IReadMessage|INewMessage = JSON.parse(event.data);
-            if(message.type === 'new_message'){
-                dispatch(chatsActions.setLastMessage({chatId: message.data.chatId, lastMessage: message.data.message}));
+        }).catch(() => {});
+        const chatsHandlers = (event: MessageEvent) => {
+            const message: IStatusMessage|IReadMessage|INewMessage|INewChat = JSON.parse(event.data);
+            switch (message.type) {
+                case "new_message":
+                {
+                    dispatch(chatsActions.setLastMessage({chatId: message.data.chatId, lastMessage: message.data.message}));
+                    break;
+                }
+                case "status":
+                {
+                    dispatch(chatsActions.setUserStatus({recipientId: message.data.userId, isRecipientOnline: message.data.isOnline}));
+                    break;
+                }
+                case "new_chat":
+                {
+                    dispatch(chatsActions.addNewChat(message.data));
+                    break;
+                }
             }
         }
 
-        WsApi.wsApi.addEventListener('message', setUserStatusHandler);
-        WsApi.wsApi.addEventListener('message', setNewMessage);
+        WsApi.wsApi.addEventListener('message', chatsHandlers);
         return () => {
-            WsApi.wsApi.removeEventListener('message', setUserStatusHandler);
-            WsApi.wsApi.removeEventListener('message', setNewMessage);
+            WsApi.wsApi.removeEventListener('message', chatsHandlers);
         }
     }, []);
 

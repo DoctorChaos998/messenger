@@ -24,6 +24,9 @@ const ChatItem: FC<IChatItemProps> = ({chatId}) => {
                     {chat.lastMessage}
                 </div>
             </div>
+            {chat.unreadMessagesNumber > 0&&<span className={classes.unreadMessagesNumber}>
+                {chat.unreadMessagesNumber}
+            </span>}
         </div>
     );
 };

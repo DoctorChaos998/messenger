@@ -9,23 +9,30 @@ interface IChatMessageProps{
 }
 const ChatMessage: FC<IChatMessageProps> = ({messageId, recipientLogin}) => {
     const userId = useAppSelector(state => state.userReducer.id);
-    const userLogin = useAppSelector(state => state.userReducer.login);
     const message = useAppSelector(state => {
         const newState = state.currentChatReducer.messages;
         return newState.find(message => message.messageId === messageId)!;
     }, shallowEqual);
+    console.log(message.isMessageRead)
     return (
-        <div className={classes.container} style={{justifySelf:userId === message.senderId?'right':'right'}}>
+        <div className={classes.container} style={{float: userId === message.senderId?'right':'left'}}>
+            {message.message}
             <div className={classes.infoContainer}>
-                <span>
-                    {userId === message.senderId?userLogin:recipientLogin}
-                </span>
                 <span className={classes.timeContainer}>
                     {message.messageSendingDate}
                 </span>
-            </div>
-            <div className={classes.textMessageContainer}>
-                {message.message}
+                {!(userId === message.senderId)?
+                    !message.isMessageRead?
+                        <span className={`material-icons ${classes.isMessageUnRead}`}>
+                            done
+                        </span>
+                        :
+                        <span className={`material-icons ${classes.isMessageRead}`}>
+                            done_all
+                        </span>
+                    :
+                    null
+                }
             </div>
         </div>
     );
