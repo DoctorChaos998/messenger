@@ -10,6 +10,7 @@ import {chatsActions} from "@/lib/features/chats/chatsSlice";
 import ChatItem from "@/components/ChatItem/ChatItem";
 import NotInChatUser from "@/components/NotInChatUser/NotInChatUser";
 import WsApi from "@/ws/instance";
+import LogOutButton from "@/components/LogOutButton/LogOutButton";
 
 const ChatsList = () => {
     const status = useAppSelector(state => state.chatsReducer.status);
@@ -48,7 +49,6 @@ const ChatsList = () => {
                 }
             }
         }
-
         WsApi.wsApi.addEventListener('message', chatsHandlers);
         return () => {
             WsApi.wsApi.removeEventListener('message', chatsHandlers);
@@ -56,25 +56,28 @@ const ChatsList = () => {
     }, []);
 
     return (
-        <div className={classes.container}>
-            {status === 'success'?
-            <>
-                <ChatsSearcher/>
-                <p className={classes.subHeader}>Added users</p>
-                {chatIdsList.map((chatId) => <ChatItem key={chatId} chatId={chatId}/>)}
-                {searchLine&&<p className={classes.subHeader}>Global search</p>}
-                {
-                    notInChatUser&&<NotInChatUser notInChatUser={notInChatUser}/>
+        <div className={classes.mainContainer}>
+            <div className={classes.container}>
+                {status === 'success' ?
+                    <>
+                        <ChatsSearcher/>
+                        <p className={classes.subHeader}>Added users</p>
+                        {chatIdsList.map((chatId) => <ChatItem key={chatId} chatId={chatId}/>)}
+                        {searchLine && <p className={classes.subHeader}>Global search</p>}
+                        {
+                            notInChatUser && <NotInChatUser notInChatUser={notInChatUser}/>
+                        }
+                    </>
+                    :
+                    <>
+                        <SearchLineSkeleton/>
+                        {
+                            Array(3).fill(1).map((_, index) => <ChatSkeleton key={index}></ChatSkeleton>)
+                        }
+                    </>
                 }
-            </>
-            :
-            <>
-                <SearchLineSkeleton/>
-                {
-                    Array(3).fill(1).map((_, index) => <ChatSkeleton key={index}></ChatSkeleton>)
-                }
-            </>
-            }
+            </div>
+            <LogOutButton/>
         </div>
     );
 };

@@ -1,10 +1,17 @@
 @import "src/assets/variables";
 
-.container{
-  width: 30%;
+.mainContainer{
   display: flex;
   flex-direction: column;
+  width: 30%;
   border-right: 1px solid $COLOR_NAUTICAL;
+  justify-content: space-between;
+}
+
+.container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .subHeader{

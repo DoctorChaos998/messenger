@@ -20,6 +20,6 @@ interface IMessage{
     messageId: number,
     senderId: number,
     messageSendingDate: string,
-    isMessageRead: false,
+    isMessageRead: boolean,
     message: string
 }

@@ -27,7 +27,12 @@ const chatsSlice = createSlice({
         setChatId(state, action: PayloadAction<number>){
             state.currentChatId = action.payload;
         },
-
+        readAllMessages(state){
+            state.messages.forEach(message => message.isMessageRead = true);
+        },
+        loadMoreMessages(state, action: PayloadAction<IMessage[]>){
+            state.messages = [...action.payload, ...state.messages];
+        }
     }
 })
 export const {actions: currentChatActions, reducer: currentChatReducer} = chatsSlice;

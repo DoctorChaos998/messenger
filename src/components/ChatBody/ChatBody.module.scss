@@ -1,8 +1,6 @@
 @import "src/assets/variables";
 
 .container{
-  //flex: 1;
-  //display: flex;
   flex-direction: column;
   gap: 10px;
   overflow-y: auto;
@@ -20,4 +18,17 @@
   &::-webkit-scrollbar-track {
     background-color: transparent;
   }
+}
+
+.noMessagesContainer{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: $COLOR_LIGHT_THEME_PRIMARY;
+}
+
+.icon{
+  font-size: 2em;
 }

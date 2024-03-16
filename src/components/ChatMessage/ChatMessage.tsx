@@ -5,15 +5,13 @@ import classes from "./ChatMessage.module.scss";
 
 interface IChatMessageProps{
     messageId: number,
-    recipientLogin: string
 }
-const ChatMessage: FC<IChatMessageProps> = ({messageId, recipientLogin}) => {
+const ChatMessage: FC<IChatMessageProps> = ({messageId}) => {
     const userId = useAppSelector(state => state.userReducer.id);
     const message = useAppSelector(state => {
         const newState = state.currentChatReducer.messages;
         return newState.find(message => message.messageId === messageId)!;
     }, shallowEqual);
-    console.log(message.isMessageRead)
     return (
         <div className={classes.container} style={{float: userId === message.senderId?'right':'left'}}>
             {message.message}
@@ -21,7 +19,7 @@ const ChatMessage: FC<IChatMessageProps> = ({messageId, recipientLogin}) => {
                 <span className={classes.timeContainer}>
                     {message.messageSendingDate}
                 </span>
-                {!(userId === message.senderId)?
+                {userId === message.senderId?
                     !message.isMessageRead?
                         <span className={`material-icons ${classes.isMessageUnRead}`}>
                             done

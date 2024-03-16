@@ -31,3 +31,10 @@ export const checkAuth = () => async (dispatch: AppDispatch) => {
     });
 }
 
+export const logout = () => async (dispatch: AppDispatch) => {
+    UserService.logout().then(() => {
+        dispatch(userActions.userLogoutSuccess());
+        WsApi.disconnect();
+    })
+}
+

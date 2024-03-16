@@ -43,11 +43,14 @@ const chatsSlice = createSlice({
         setLastMessage(state, action: PayloadAction<{chatId: number, lastMessage: string}>){
             const newChat = state.chatsList.find(chat => chat.chatId === action.payload.chatId)!;
             newChat.lastMessage = action.payload.lastMessage;
-            // newChat.unreadMessagesNumber += 1;
+            newChat.unreadMessagesNumber += 1;
         },
         addNewChat(state, action: PayloadAction<IChat>){
             state.chatsList.unshift(action.payload);
-        }
+        },
+        clearUnreadMessages(state, action: PayloadAction<number>){
+            state.chatsList.find(chat => chat.chatId === action.payload)!.unreadMessagesNumber = 0;
+        },
     }
 })
 export const {actions: chatsActions, reducer: chatsReducer} = chatsSlice;

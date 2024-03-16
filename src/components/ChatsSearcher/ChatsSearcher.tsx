@@ -31,7 +31,7 @@ const ChatsSearcher = () => {
                 <span className={`material-icons ${classes.icon}`}>
                     search
                 </span>
-                <input maxLength={32} placeholder={'Find some one...'} className={classes.input} value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)}/>
+                <input maxLength={32} placeholder={'Find someone...'} className={classes.input} value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)}/>
             </label>
         </div>
     );

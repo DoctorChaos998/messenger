@@ -54,6 +54,7 @@ export default class ChatService {
         } catch (error){
             if(axios.isAxiosError(error)){
                 const errorResponse: AxiosError<{error: string}> = error;
+                console.log('@ 6', errorResponse)
                 if(errorResponse.response){
                     return Promise.reject({
                         status: errorResponse.response.status,

@@ -25,7 +25,7 @@ const userSlice = createSlice({
             state.status = 'success';
         },
         userLogoutSuccess(){
-            return {...initialState};
+            return {...initialState, status: 'success'};
         },
         setStatus(state, action: PayloadAction<status>){
             state.status = action.payload;
