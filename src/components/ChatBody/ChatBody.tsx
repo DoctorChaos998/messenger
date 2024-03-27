@@ -76,7 +76,7 @@ const ChatBody = ({chatId}: {chatId:number}) => {
 
     return (
         <div className={classes.container} ref={containerRef} onScroll={(event) => {
-            if(event.currentTarget.scrollTop === 0 && canLoadMore.current) {
+            if(event.currentTarget.scrollTop < 100 && canLoadMore.current) {
                 canLoadMore.current = false
                 ChatService.getMessages(chatId, topMessageNumber.current, 20).then(value => {
                     dispatch(currentChatActions.loadMoreMessages(value));
